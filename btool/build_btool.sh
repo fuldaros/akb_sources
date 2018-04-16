@@ -1,5 +1,8 @@
 #!/bin/bash
 # by fuldaros
+e="\x1b[";c=$e"39;49;00m";y=$e"93;01m";cy=$e"96;01m";r=$e"1;91m";g=$e"92;01m";m=$e"95;01m";
+echo -e "$g  BUILDING GEN_AKB$y"
+sleep 2;
 cd btool
 mkdir ../binary_btool
 ./shc -v -f gen_akb.sh
