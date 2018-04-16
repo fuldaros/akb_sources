@@ -89,7 +89,7 @@ echo -e "$y User: "$usr"
 echo -e "$cy******************************$y"
 sleep 4
 # Экспортируем gcc из make.prop
-export CROSS_COMPILE="$PWD"/tools/"$gcc"
+export CROSS_COMPILE="$PWD"/gcc/bin/"$gcc"
 cd sources/
 echo -e "$g Начинаем сборку ядра...$y"
 strt=$(date +"%s")

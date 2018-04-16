@@ -1,9 +1,8 @@
 #!/bin/bash
 # by fuldaros
 ver=0.7
-mkdir binary_btool
 cd btool
-../shc -v -f makeproj.sh
+./shc -v -f makeproj.sh
 rm -f makeproj.sh.x.c
 cd ../
 cat btool/makeproj.sh.x > binary_btool/makeproj

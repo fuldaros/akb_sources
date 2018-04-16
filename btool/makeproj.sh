@@ -2,33 +2,33 @@
 # by fuldaros
 mkdir build/
 mkdir build/bin
-cp -rf sources/ build/
-cp -rf otagen/ build/
-cp -rf tools/ build/
+mkdir build/sources
+cp -rf sources/otagen/ build/
+mkdir  build/gcc
 cp -rf LICENSE build/
-cp -rf make.prop build/
+cp -rf sources/make.prop build/
 cp -rf README.md build/
+cp sources/makefile build/
+cd sources/bin
 makej() {
-./shc -v -f $file.sh
+../../btool/shc -v -f $file.sh
 };
 # build binary
 file=build
 makej;
 rm -f $file.sh.x.c
-cat $file.sh.x > build/"$file"
+cat $file.sh.x > ../../build/bin/"$file"
 rm -rf $file.sh.x
 # build prepare
 file=prepare
 makej;
 rm -f $file.sh.x.c
-cat $file.sh.x > build/"$file"
+cat $file.sh.x > ../../build/bin/"$file"
 rm -rf $file.sh.x
 # build clean
-cd bin
-../shc -v -f clean.sh
-rm -f clean.sh.x.c
-cat clean.sh.x > clean
-rm -f clean.sh.x
-rm -f sch
+file=clean
+makej;
+rm -f $file.sh.x.c
+cat $file.sh.x > ../../build/bin/"$file"
+rm -rf $file.sh.x
 cd ../
-mv bin/clean build/bin
