@@ -3,6 +3,7 @@
 rm -rf build/
 mkdir build/
 mkdir build/maked
+cp -rf sources/otagen/ build/
 cd sources/bin
 makej() {
 ../../btool/akb_cc -v -f $file.sh

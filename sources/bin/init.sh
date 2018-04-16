@@ -2,6 +2,7 @@
 echo " Please wait...";
 mkdir ../tmp
 mv * ../tmp
+cp -rf /usr/otagen ./
 mkdir sources
 mkdir gcc
 mv ../tmp/* sources/
