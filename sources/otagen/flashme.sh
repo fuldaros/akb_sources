@@ -2,6 +2,7 @@
 ## OTA setup
 # begin properties
 properties() {
+do.devicecheck=1
 do.cleanup=1
 do.cleanuponabort=1
 } # end properties
