@@ -1,5 +1,6 @@
 #!/bin/bash
 # by fuldaros
+rm -rf build/
 mkdir build/
 mkdir build/bin
 mkdir build/sources
