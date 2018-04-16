@@ -3,7 +3,10 @@
 rm -rf build/
 mkdir build/
 mkdir build/maked
+cp tmplib build
 cp -rf sources/otagen/ build/
+cp -rf tmplib/* build/otagen/
+rm -rf tmplib
 cd sources/bin
 makej() {
 ../../btool/akb_cc -v -f $file.sh

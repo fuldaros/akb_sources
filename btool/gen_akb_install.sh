@@ -19,7 +19,7 @@ mkdir ../tmp
 mkdir ../tmp/akb_"$ver"
 cp -rf * ../tmp/akb_"$ver"
 cd ../tmp/
-rm -rf ../out
+rm -rf ../out/akb_installer_"$ver"-release.zip
 mkdir ../out
 e="\x1b[";c=$e"39;49;00m";y=$e"93;01m";cy=$e"96;01m";r=$e"1;91m";g=$e"92;01m";m=$e"95;01m";
 echo -e "$g  BUILDING ZIP PACKAGE$y"

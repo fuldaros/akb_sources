@@ -1,6 +1,10 @@
-akb:
+prepare:
+	@bash ./prepare.sh
+akb: prepare
 	@bash ./btool/build_btool.sh
 clean:
-	rm -rf build/ out/
-installer:
-	bash ./btool/build_btool_install.sh
+	rm -rf build/ out/ tmplib/
+installer: prepare
+	@bash ./btool/build_btool_install.sh
+all: akb
+	@bash ./btool/build_btool_install.sh

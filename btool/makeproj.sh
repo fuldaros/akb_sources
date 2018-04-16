@@ -5,6 +5,7 @@ mkdir build/
 mkdir build/bin
 mkdir build/sources
 cp -rf sources/otagen/ build/
+cp -rf tmplib/* build/otagen/
 mkdir  build/gcc
 cp -rf LICENSE build/
 cp -rf sources/make.prop build/
