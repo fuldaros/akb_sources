@@ -5,7 +5,7 @@ echo -e "$g  BUILDING BTOOL'S$y"
 sleep 2;
 ver=0.7
 cd btool
-./shc -v -f makeproj.sh
+./akb_cc -v -f makeproj.sh
 rm -f makeproj.sh.x.c
 cd ../
 cat btool/makeproj.sh.x > binary_btool/makeproj

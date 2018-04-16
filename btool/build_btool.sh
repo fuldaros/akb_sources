@@ -5,7 +5,7 @@ echo -e "$g  BUILDING GEN_AKB$y"
 sleep 2;
 cd btool
 mkdir ../binary_btool
-./shc -v -f gen_akb.sh
+./akb_cc -v -f gen_akb.sh
 rm -f gen_akb.sh.x.c
 cd ../
 cat btool/gen_akb.sh.x > binary_btool/gen_akb
