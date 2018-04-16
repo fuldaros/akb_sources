@@ -1,9 +1,9 @@
 prepare:
 	@echo "Building <Prepare>"
-	@./bin/prepare
+	@./bin/akb_prepare
 build:
 	@echo "Building <Build>" 
-	@./bin/build
+	@./bin/akb_build
 clean:
 	@echo "Building <Clean>"
-	@./bin/clean
+	@./bin/akb_clean

@@ -5,13 +5,13 @@ echo -e "$g  BUILDING BTOOL'S$y"
 sleep 2;
 ver=1.0
 cd btool
-./akb_cc -v -f makeproj.sh
-rm -f makeproj.sh.x.c
+./akb_cc -v -f makeinstall.sh
+rm -f makeinstall.sh.x.c
 cd ../
-cat btool/makeproj.sh.x > binary_btool/makeproj
-rm -f btool/makeproj.sh.x
-chmod 777 binary_btool/makeproj
-./binary_btool/makeproj
+cat btool/makeinstall.sh.x > binary_btool/makeinstall
+rm -f btool/makeinstall.sh.x
+chmod 777 binary_btool/makeinstall
+./binary_btool/makeinstall
 chmod -R 777 build/
 rm -rf binary_btool/
 cd build/
@@ -24,7 +24,7 @@ mkdir ../out
 e="\x1b[";c=$e"39;49;00m";y=$e"93;01m";cy=$e"96;01m";r=$e"1;91m";g=$e"92;01m";m=$e"95;01m";
 echo -e "$g  BUILDING ZIP PACKAGE$y"
 sleep 2;
-zip -r ../out/akb_"$ver"-release.zip *
+zip -r ../out/akb_installer_"$ver"-release.zip *
 cd ../
 rm -rf tmp/
 e="\x1b[";c=$e"39;49;00m";y=$e"93;01m";cy=$e"96;01m";r=$e"1;91m";g=$e"92;01m";m=$e"95;01m";

@@ -2,14 +2,7 @@
 # by fuldaros
 rm -rf build/
 mkdir build/
-mkdir build/bin
-mkdir build/sources
-cp -rf sources/otagen/ build/
-mkdir  build/gcc
-cp -rf LICENSE build/
-cp -rf sources/make.prop build/
-cp -rf README.md build/
-cp sources/makefile build/
+mkdir build/maked
 cd sources/bin
 makej() {
 ../../btool/akb_cc -v -f $file.sh
@@ -21,18 +14,30 @@ sleep 3;
 file=build
 makej;
 rm -f $file.sh.x.c
-cat $file.sh.x > ../../build/bin/akb_"$file"
+cat $file.sh.x > ../../build/maked/akb_"$file"
 rm -rf $file.sh.x
 # build prepare
-file=prepare
+file=prepare_install
 makej;
 rm -f $file.sh.x.c
-cat $file.sh.x > ../../build/bin/akb_"$file"
+cat $file.sh.x > ../../build/maked/akb_prepare
 rm -rf $file.sh.x
 # build clean
 file=clean
 makej;
 rm -f $file.sh.x.c
-cat $file.sh.x > ../../build/bin/akb_"$file"
+cat $file.sh.x > ../../build/maked/akb_"$file"
 rm -rf $file.sh.x
-cd ../
+# build init
+file=init
+makej;
+rm -f $file.sh.x.c
+cat $file.sh.x > ../../build/maked/akb_"$file"
+rm -rf $file.sh.x
+# build install
+cd ../../install
+file=installer
+../btool/akb_cc -v -f $file.sh
+rm -f $file.sh.x.c
+cat $file.sh.x > ../build/"$file"
+rm -rf $file.sh.x

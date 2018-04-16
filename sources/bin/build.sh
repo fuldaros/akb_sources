@@ -23,7 +23,7 @@ cpu=$(sed -n 10p make.prop);
 imgt=$(sed -n 14p make.prop);
 loc=$(sed -n 18p make.prop);
 gcc=$(sed -n 16p make.prop);
-sha="0"
+sha="1"
 };
 # EXPORT
 function exportcm {
@@ -50,7 +50,7 @@ sleep 3
 zip -r ../outzip/"$otazip".zip *
 };
 ## FUNCTIONS END
-ver=0.7;
+ver=1.0;
 clear
 e="\x1b[";c=$e"39;49;00m";y=$e"93;01m";cy=$e"96;01m";r=$e"1;91m";g=$e"92;01m";m=$e"95;01m";
 echo -e "
