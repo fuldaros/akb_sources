@@ -76,7 +76,8 @@ ui_print "  Device: "$device"";
 ui_print "  Build time: "$bt"";
 ui_print "********************************";
 sleep 3;
-ui_print "Boot: "$loc"";
+ui_print "Boot patch:";
+ui_print "$loc";
 umount /system 2>/dev/null;
 umount /vendor 2>/dev/null;
 mount -o ro -t auto /system;
@@ -93,19 +94,12 @@ if [ $? != 0 -o -z "$(ls /tmp/otapack/bin)" ]; then
   abort "Recovery busybox setup failed. Aborting...";
 fi;
 PATH="/tmp/otapack/bin:$PATH" $bb ash /tmp/otapack/flashme.sh $2;
-if [ $? != "0" ]; then
-  abort;
-fi;
   done;
   cd /tmp/otapack;
   mount -o ro,remount -t auto /system;
   mount -o ro,remount -t auto /vendor 2>/dev/null;
 fi;
-
-if [ "$(file_getprop /tmp/otapack/flashme.sh do.cleanup)" == 1 ]; then
   cleanup;
-fi;
-
 umount /system;
 umount /vendor 2>/dev/null;
 umount /data 2>/dev/null;
