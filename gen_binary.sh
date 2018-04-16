@@ -15,9 +15,10 @@ rm -rf binary_btool/
 cd build/
 mkdir ../tmp
 mkdir ../tmp/akb_"$ver"
-mkdir ../out
 cp -rf * ../tmp/akb_"$ver"
-cd ../tmp/akb_"$ver"
-zip -r ../../out/akb_"$ver"-release.zip *
-cd ../../
+cd ../tmp/
+rm -rf ../out
+mkdir ../out
+zip -r ../out/akb_"$ver"-release.zip *
+cd ../
 rm -rf tmp/
