@@ -1,8 +1,8 @@
 #!/bin/bash
-echo " Please wait...";
+echo " Please wait..."
 mkdir ../tmp
 mv * ../tmp
-sleep 2;
+sleep 2
 cp -rf /usr/otagen ./
 mkdir sources
 mkdir gcc
@@ -25,5 +25,5 @@ image_type_here
 // GCC perfix
 gcc_perfix_here
 // Boot.img location
-boot.img_location_here" > make.prop
-echo " Done!";
+boot.img_location_here" >make.prop
+echo " Done!"
