@@ -1,5 +1,5 @@
 prepare:
-	@bash ./prepare.sh
+	@bash ./btool/prepare.sh
 akb: prepare
 	@bash ./btool/build_btool.sh
 clean:

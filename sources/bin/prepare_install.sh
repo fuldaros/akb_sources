@@ -8,7 +8,7 @@ export KBUILD_BUILD_USER="$author"
 export KBUILD_BUILD_HOST="$bh"
 };
 clear
-ver=1.0;
+ver=1.1;
 device=$(sed -n 12p make.prop);
 e="\x1b[";c=$e"39;49;00m";y=$e"93;01m";cy=$e"96;01m";r=$e"1;91m";g=$e"92;01m";m=$e"95;01m";
 conf=$(sed -n 6p make.prop);

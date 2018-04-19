@@ -2,6 +2,7 @@
 echo " Please wait...";
 mkdir ../tmp
 mv * ../tmp
+sleep 2;
 cp -rf /usr/otagen ./
 mkdir sources
 mkdir gcc
@@ -22,7 +23,7 @@ device_here
 // Image type (zImage/Image/Image.gz-dtb/...)
 image_type_here
 // GCC perfix
-gcc__perfix_here
-// Kernel location
-kernel_location_here" > make.prop
+gcc_perfix_here
+// Boot.img location
+boot.img_location_here" > make.prop
 echo " Done!";

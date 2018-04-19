@@ -20,20 +20,20 @@ echo -e "$g  BUILDING BINARY$y"
 sleep 3;
 # build binary
 file=build
-makej;
-rm -f $file.sh.x.c
-cat $file.sh.x > ../../build/bin/akb_"$file"
-rm -rf $file.sh.x
+	makej;
+		rm -f $file.sh.x.c
+		cat $file.sh.x > ../../build/bin/akb_"$file"
+		rm -rf $file.sh.x
 # build prepare
 file=prepare
-makej;
-rm -f $file.sh.x.c
-cat $file.sh.x > ../../build/bin/akb_"$file"
-rm -rf $file.sh.x
+	makej;
+		rm -f $file.sh.x.c
+		cat $file.sh.x > ../../build/bin/akb_"$file"
+		rm -rf $file.sh.x
 # build clean
 file=clean
-makej;
-rm -f $file.sh.x.c
-cat $file.sh.x > ../../build/bin/akb_"$file"
-rm -rf $file.sh.x
+	makej;
+		rm -f $file.sh.x.c
+		cat $file.sh.x > ../../build/bin/akb_"$file"
+		rm -rf $file.sh.x
 cd ../

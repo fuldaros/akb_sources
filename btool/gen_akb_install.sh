@@ -3,7 +3,7 @@
 e="\x1b[";c=$e"39;49;00m";y=$e"93;01m";cy=$e"96;01m";r=$e"1;91m";g=$e"92;01m";m=$e"95;01m";
 echo -e "$g  BUILDING BTOOL'S$y"
 sleep 2;
-ver=1.0
+ver=1.1
 cd btool
 ./akb_cc -v -f makeinstall.sh
 rm -f makeinstall.sh.x.c
