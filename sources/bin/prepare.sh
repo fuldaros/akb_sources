@@ -15,10 +15,10 @@ export a11=$(sed -n 18p make.prop);
 export a12=$(sed -n 16p make.prop);
 export a13="1"
 function exportcm {
-export ARCH="$arch"
-export TARGET_ARCH="$arch"
-export KBUILD_BUILD_USER="$author"
-export KBUILD_BUILD_HOST="$bh"
+  export ARCH="$arch"
+  export TARGET_ARCH="$arch"
+  export KBUILD_BUILD_USER="$author"
+  export KBUILD_BUILD_HOST="$bh"
 };
 clear
 ver=1.1;
@@ -32,8 +32,8 @@ $cy*           Automatic kernel builder v"$ver"          *
 $cy*                   by fuldaros                    *
 $cy****************************************************
 $y";
-sleep 3     
-set -e 
+sleep 3
+set -e
 ./bin/akb_clean
 rm -f gen.info
 mkdir out

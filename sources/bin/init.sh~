@@ -12,7 +12,7 @@ echo "// YOUR NAME (a.k.a build user)
 name_here
 // ARCH (arm/arm64)
 arch_here
-// DEFCONFIG NAME
+// DEFCONFIG NAME 
 defconfig_here
 // BUILD HOST
 build_host_here

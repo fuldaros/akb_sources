@@ -96,29 +96,29 @@ e="\x1b[";c=$e"39;49;00m";y=$e"93;01m";cy=$e"96;01m";r=$e"1;91m";g=$e"92;01m";m=
     $cy****************************************************
     $y";
     sleep 3
-    # Прерываем выполнение при появлении пошибки
+  # Прерываем выполнение при появлении пошибки
     set -e
-    # Создание переменных
+  # Создание переменных
     linkvar;
-    # Тип сборки (бесполезная хрень)
+  # Тип сборки (бесполезная хрень)
     if [[ "$sha" != "1" ]]
     then
       type="USER";
     else
       type="OFFICIAL";
     fi
-    # Еще переменная
+  # Еще переменная
     kernel="$imgt"_akb_"$stamp";
-    # Экспортируем необходимые значения из make.prop
+  # Экспортируем необходимые значения из make.prop
     exportmkval;
     printinfo;
     sleep 4
-    # Экспортируем gcc из make.prop
+  # Экспортируем gcc из make.prop
     export CROSS_COMPILE="$PWD"/gcc/bin/"$gcc"
     cd sources/
     echo -e "$g Начинаем сборку ядра...$y"
     strt=$(date +"%s")
-    # Сборка ядра :3
+  # Сборка ядра :3
     make -j3 O=../out/akb_"$device" "$imgt"
     clear
     echo -e "
@@ -130,17 +130,17 @@ $cy****************************************************
     echo -e "$g Сборка завершена!
     Переносим ядро в outkernel... $y"
     sleep 3
-    # Перенос ядра в папку outkernel
+  # Перенос ядра в папку outkernel
     cat ../out/akb_"$device"/arch/"$arch"/boot/"$imgt" > ../outkernel/"$kernel"
     rm -rf ../out/akb_"$device"/arch/"$arch"/boot/
     cd ../
     mkota;
     echo -e "$g Удаление временных фаилов...$y"
-    # Отчистка tmp фаилов
+  # Отчистка tmp фаилов
     sleep 1
     cleantmp;
     echo -e "$g Готово! Имя OTA пакета: "$otazip".zip$y"
-    # Вывод времени сборки
+  # Вывод времени сборки
     end=$(date +"%s")
     diff=$(( $end - $strt ))
     echo Операция выполнена успешно!
