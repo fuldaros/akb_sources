@@ -21,7 +21,7 @@ if [ "$ch1" != "" ]; then
   exit
 else
   function cleantmp() {
-    rm -rf out/akb_"$device"/include/generated/compile.h
+    rm -rf out/build/"$device"/include/generated/compile.h
     rm -f zImage
     rm -f generated.info
     rm -f author.prop
@@ -42,7 +42,9 @@ else
     loc=$a11
     gcc=$a12
     sha=$a13
-  }
+    cpus=$(cat /proc/cpuinfo | grep processor | wc -l)
+    th=$(($cpus + 1)) 
+ }
 
   # EXPORT
   function exportmkval() {
@@ -55,18 +57,18 @@ else
   # MAKE OTA PACK
   function mkota() {
     echo -e "$g Собираем OTA пакет...$y"
-    cat outkernel/"$kernel" >otagen/zImage
+    cat out/kernel/"$kernel" > otagen/zImage
     cd otagen
-    echo "ZIP file is generated automatically by fuldaros's script on "$stamp""\n"Good luck!" >generated.info
+    echo "ZIP file is generated automatically by fuldaros's script on "$stamp""\n"Good luck!" > generated.info
     echo -e "$g Генерируем author.prop...$y"
     sleep 2
     cat ../make.prop >author.prop
-    echo -e "# BUILD TIME" "\n""$stampt" >>author.prop
-    echo -e "# AKB ver. (DONT EDIT)""\n""$ver" >>author.prop
-    echo -e "#BUILD TYPE" "\n""$type" >>author.prop
+    echo -e "# BUILD TIME" "\n""$stampt" >> author.prop
+    echo -e "# AKB ver. (DONT EDIT)""\n""$ver" >> author.prop
+    echo -e "#BUILD TYPE" "\n""$type" >> author.prop
     echo -e "$g Сжимаем...$y"
     sleep 3
-    zip -r ../outzip/"$otazip".zip *
+    zip -r ../out/zip/"$otazip".zip *
   }
 
   # Вывод информации о сборке
@@ -80,12 +82,13 @@ else
     Device: "$device"
     Build time: "$stamp"
     Kernel location: "$loc"
-    Build type: "$type""
+    Build type: "$type"
+    Threads: "$th""
     echo -e "$cy******************************$y"
   }
 
   ## FUNCTIONS END
-  ver=1.1
+  ver=1.2
   clear
   e="\x1b["
   c=$e"39;49;00m"
@@ -112,7 +115,7 @@ else
     type="OFFICIAL"
   fi
   # Еще переменная
-  kernel="$imgt"_akb_"$stamp"
+  kernel="$imgt"_"$stamp"
   # Экспортируем необходимые значения из make.prop
   exportmkval
   printinfo
@@ -123,7 +126,7 @@ else
   echo -e "$g Начинаем сборку ядра...$y"
   strt=$(date +"%s")
   # Сборка ядра :3
-  make -j3 O=../out/akb_"$device" "$imgt"
+  make -j$th O=../out/build/"$device" "$imgt"
   clear
   echo -e "
 $cy****************************************************
@@ -132,11 +135,11 @@ $cy*                   by fuldaros                    *
 $cy****************************************************
     $y"
   echo -e "$g Сборка завершена!
-    Переносим ядро в outkernel... $y"
+    Переносим ядро в out/kernel... $y"
   sleep 3
-  # Перенос ядра в папку outkernel
-  cat ../out/akb_"$device"/arch/"$arch"/boot/"$imgt" >../outkernel/"$kernel"
-  rm -rf ../out/akb_"$device"/arch/"$arch"/boot/
+  # Перенос ядра в папку out/kernel
+  cat ../out/build/"$device"/arch/"$arch"/boot/"$imgt" >../out/kernel/"$kernel"
+  rm -rf ../out/build/"$device"/arch/"$arch"/boot/
   cd ../
   mkota
   echo -e "$g Удаление временных фаилов...$y"
