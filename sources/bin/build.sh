@@ -7,8 +7,8 @@ export a2=$(sed -n 8p make.prop)
 export a3=$(sed -n 4p make.prop)
 export a4=$(date +"%Y.%m.%d %H:%M")
 export a5=$(date +"%d.%m.%Y-%H:%M")
-export a6=logb_"$stamp"
-export a7=ota_akb_"$stamp"
+export a6=logb_"$a4"
+export a7=ota_akb_"$a4"
 export a8=$(sed -n 12p make.prop)
 export a9=$(sed -n 10p make.prop)
 export a10=$(sed -n 14p make.prop)
@@ -68,14 +68,14 @@ else
     echo -e "#BUILD TYPE" "\n""$type" >> author.prop
     echo -e "$g Сжимаем...$y"
     sleep 3
-    zip -r ../out/zip/"$otazip".zip *
+    zip -r ../out/ota/"$otazip".zip *
   }
 
   # Вывод информации о сборке
   function printinfo() {
     echo -e "$cy******************************$y"
     echo -e "$g   Build info"
-    echo -e "$y User: "$usr"
+    echo -e "$y    User: "$usr"
     Host: "$bh"
     ARCH: "$arch"
     CPU: "$cpu"
