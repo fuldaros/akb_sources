@@ -88,7 +88,7 @@ else
   }
 
   ## FUNCTIONS END
-  ver=1.2
+  ver=1.3
   clear
   e="\x1b["
   c=$e"39;49;00m"

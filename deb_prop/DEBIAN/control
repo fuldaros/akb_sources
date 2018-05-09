@@ -1,0 +1,12 @@
+Package: akb
+Source: akb
+Version: 1.3.01
+Architecture: amd64
+Maintainer: fuldaros <ya.lineageteam@yandex.ru>
+Installed-Size: 2000
+Replaces: akb (<= 1.3.01)
+Section: utils
+Priority: optional
+Description: Automatic Kernel Builder 1.3
+ AKB by fuldaros
+Original-Maintainer: fuldaros <ya.lineageteam@yandex.ru>

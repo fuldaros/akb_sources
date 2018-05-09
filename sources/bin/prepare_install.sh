@@ -8,7 +8,7 @@ function exportcm() {
   export KBUILD_BUILD_HOST="$bh"
 }
 clear
-ver=1.2
+ver=1.3
 device=$(sed -n 12p make.prop)
 e="\x1b["
 c=$e"39;49;00m"
