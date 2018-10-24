@@ -1,5 +1,5 @@
 #!/bin/bash
-# by fuldaros
+# by xyzmean
 echo "Starting AKB Cleaner..."
 sleep 5
 echo "AKB Cleaner started!"

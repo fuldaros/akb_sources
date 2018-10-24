@@ -1,15 +1,15 @@
 #!/bin/bash
-# by fuldaros
+# by xyzmean
 ## FUNCTIONS START
 # CLEAN TMP
 export a1=$(sed -n 2p make.prop)
 export a2=$(sed -n 8p make.prop)
 export a3=$(sed -n 4p make.prop)
 export a4=$(date +"%Y.%m.%d %H:%M")
-export a5=$(date +"%d.%m.%Y-%H:%M")
+export a5=$(date)
 export a6=logb_"$a4"
-export a7=ota_akb_"$a4"
 export a8=$(sed -n 12p make.prop)
+export a7=ota_"$a8"_"$a4"
 export a9=$(sed -n 10p make.prop)
 export a10=$(sed -n 14p make.prop)
 export a11=$(sed -n 18p make.prop)
@@ -42,8 +42,9 @@ else
     loc=$a11
     gcc=$a12
     sha=$a13
+    archp=$(dpkg --print-architecture)
     cpus=$(cat /proc/cpuinfo | grep processor | wc -l)
-    th=$(($cpus + 1)) 
+    th=$(($cpus + 3)) 
  }
 
   # EXPORT
@@ -88,7 +89,7 @@ else
   }
 
   ## FUNCTIONS END
-  ver=1.3
+  ver=1.4
   clear
   e="\x1b["
   c=$e"39;49;00m"
@@ -100,7 +101,7 @@ else
   echo -e "
     $cy****************************************************
     $cy*           Automatic kernel builder v"$ver"          *
-    $cy*                   by fuldaros                    *
+    $cy*                   by xyzmean                    *
     $cy****************************************************
     $y"
   sleep 3
@@ -121,7 +122,11 @@ else
   printinfo
   sleep 4
   # Экспортируем gcc из make.prop
-  export CROSS_COMPILE="$PWD"/gcc/bin/"$gcc"
+  if [["$archp" = "amd64"]]; then
+    export CROSS_COMPILE="$PWD"/gcc/bin/"$gcc"
+  else 
+    echo "Your arch not amd64!";
+  fi
   cd sources/
   echo -e "$g Начинаем сборку ядра...$y"
   strt=$(date +"%s")
@@ -131,7 +136,7 @@ else
   echo -e "
 $cy****************************************************
 $cy*           Automatic kernel builder v"$ver"          *
-$cy*                   by fuldaros                    *
+$cy*                   by xyzmean                    *
 $cy****************************************************
     $y"
   echo -e "$g Сборка завершена!
@@ -154,4 +159,4 @@ $cy****************************************************
   sleep 2
   echo -e "$m Компиляция заняла "$diff" секунд!"
 fi
-####### script v09 (beta)
+####### script v12 (beta)

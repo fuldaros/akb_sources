@@ -21,7 +21,7 @@ function exportcm() {
   export KBUILD_BUILD_HOST="$bh"
 }
 clear
-ver=1.3
+ver=1.4
 e="\x1b["
 c=$e"39;49;00m"
 y=$e"93;01m"
