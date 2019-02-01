@@ -1,9 +1,10 @@
 prepare:
 	@bash ./btool/prepare.sh
+	@bash ./btool/gen_cc.sh
 akb: prepare
 	@bash ./btool/build_btool.sh
 clean:
-	rm -rf build/ out/ tmplib/
+	rm -rf build/ out/ tmplib/ ./btool/akb_cc
 installer: prepare
 	@bash ./btool/build_btool_install.sh
 deb: prepare

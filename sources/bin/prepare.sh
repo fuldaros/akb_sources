@@ -21,7 +21,7 @@ function exportcm() {
   export KBUILD_BUILD_HOST="$bh"
 }
 clear
-ver=1.4
+ver=1.5-nightly
 e="\x1b["
 c=$e"39;49;00m"
 y=$e"93;01m"
@@ -34,8 +34,8 @@ arch=$a3
 device=$a8
 echo -e "
 $cy****************************************************
-$cy*           Automatic kernel builder v"$ver"          *
-$cy*                   by fuldaros                    *
+$cy*           Automatic kernel builder v"$ver"  *
+$cy*                   by xyzmean                     *
 $cy****************************************************
 $y"
 sleep 3

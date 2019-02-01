@@ -1,4 +1,4 @@
-# fuldaros @ 4pda
+# xyzmean @ 4pda
 ## OTA setup
 # begin properties
 properties() {

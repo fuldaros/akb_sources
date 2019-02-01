@@ -44,7 +44,7 @@ else
     sha=$a13
     archp=$(dpkg --print-architecture)
     cpus=$(cat /proc/cpuinfo | grep processor | wc -l)
-    th=$(($cpus + 3)) 
+    th=$(($cpus + 1)) 
  }
 
   # EXPORT
@@ -89,7 +89,7 @@ else
   }
 
   ## FUNCTIONS END
-  ver=1.4
+  ver=1.5-nightly
   clear
   e="\x1b["
   c=$e"39;49;00m"
@@ -100,8 +100,8 @@ else
   m=$e"95;01m"
   echo -e "
     $cy****************************************************
-    $cy*           Automatic kernel builder v"$ver"          *
-    $cy*                   by xyzmean                    *
+    $cy*           Automatic kernel builder v"$ver"  *
+    $cy*                   by xyzmean                     *
     $cy****************************************************
     $y"
   sleep 3
@@ -122,11 +122,11 @@ else
   printinfo
   sleep 4
   # Экспортируем gcc из make.prop
-  if [["$archp" = "amd64"]]; then
+#  if [["$archp" = "amd64"]]; then
     export CROSS_COMPILE="$PWD"/gcc/bin/"$gcc"
-  else 
-    echo "Your arch not amd64!";
-  fi
+#  else 
+#    echo "Your arch not amd64!";
+#  fi
   cd sources/
   echo -e "$g Начинаем сборку ядра...$y"
   strt=$(date +"%s")

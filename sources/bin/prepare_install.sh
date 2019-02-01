@@ -8,7 +8,7 @@ function exportcm() {
   export KBUILD_BUILD_HOST="$bh"
 }
 clear
-ver=1.4
+ver=1.5-nightly
 device=$(sed -n 12p make.prop)
 e="\x1b["
 c=$e"39;49;00m"
@@ -21,8 +21,8 @@ conf=$(sed -n 6p make.prop)
 arch=$(sed -n 4p make.prop)
 echo -e "
 $cy****************************************************
-$cy*           Automatic kernel builder v"$ver"          *
-$cy*                   by fuldaros                    *
+$cy*           Automatic kernel builder v"$ver"  *
+$cy*                   by xyzmean                     *
 $cy****************************************************
 $y"
 sleep 3

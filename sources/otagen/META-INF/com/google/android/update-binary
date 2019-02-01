@@ -81,7 +81,6 @@ ui_print "  Host: "$bh"";
 ui_print "  ARCH: "$arch"";
 ui_print "  CPU: "$cpu"";
 ui_print "  Device: "$device"";
-ui_print "  Build time: "$bt"";
 ui_print "***********************************";
 sleep 2;
 ui_print "Boot: "$loc"";
