@@ -19,17 +19,8 @@ if [ ! "$(getprop 2>/dev/null)" ]; then
   }
 fi;
 cleanup() { rm -rf /tmp/otapack; }
-debugging() {
-  case $(basename "$ZIPFILE" .zip) in
-    *-debugging)
-      ui_print "Creating debugging archive in zip directory...";
-      $bb tar -czvf "$DIR/otapack2-$(date +%Y-%m-%d_%H%M%S)-debug.tgz" /tmp/*;
-    ;;
-  esac;
-}
 abort() {
   ui_print "$*";
-  debugging;
   if [ ! -f /tmp/otapack/flashme.sh -o "$(file_getprop /tmp/otapack/flashme.sh do.cleanuponabort 2>/dev/null)" == 1 ]; then
     cleanup;
   fi;
@@ -104,42 +95,7 @@ PATH="/tmp/otapack/bin:$PATH" $bb ash /tmp/otapack/flashme.sh $2;
 if [ $? != "0" ]; then
   abort;
 fi;
-
-if [ "$(file_getprop /tmp/otapack/flashme.sh do.modules)" == 1 ]; then
-  ui_print "Pushing modules...";
-  mount -o rw,remount -t auto /system;
-  mount -o rw,remount -t auto /vendor 2>/dev/null;
-  cd /tmp/otapack/modules;
-  for module in $(find . -name '*.ko'); do
-    case $module in
-      */system/*) modtarget=$root/$module;;
-      *) modtarget=/$module;;
-    esac;
-    if [ ! -e $modtarget ]; then
-      case $module in
-        */vendor/*) mod=vendor;;
-        *) mod=system;;
-      esac;
-    fi;
-    mkdir -p $(dirname $modtarget);
-    $bb cp -rLf $module $modtarget;
-    $bb chown 0:0 $modtarget;
-    $bb chmod 644 $modtarget;
-    if [ "$mod" ]; then
-      chcon "u:object_r:${mod}_file:s0" $modtarget;
-    fi;
-  done;
-  cd /tmp/otapack;
-  mount -o ro,remount -t auto /system;
-  mount -o ro,remount -t auto /vendor 2>/dev/null;
-fi;
-
-debugging;
-
-if [ "$(file_getprop /tmp/otapack/flashme.sh do.cleanup)" == 1 ]; then
-  cleanup;
-fi;
-
+cleanup;
 umount /system;
 umount /vendor 2>/dev/null;
 umount /data 2>/dev/null;

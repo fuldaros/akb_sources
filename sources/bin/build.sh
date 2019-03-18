@@ -100,8 +100,9 @@ else
   m=$e"95;01m"
   echo -e "
     $cy****************************************************
-    $cy*           Automatic kernel builder v"$ver"  *
+    $cy*       Automatic kernel builder v"$ver"      *
     $cy*                   by xyzmean                     *
+    $cy*           PaperPlane marmite Edition             *
     $cy****************************************************
     $y"
   sleep 3
