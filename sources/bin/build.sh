@@ -15,6 +15,7 @@ export a10=$(sed -n 14p make.prop)
 export a11=$(sed -n 18p make.prop)
 export a12=$(sed -n 16p make.prop)
 export a13="1"
+# Проверка make.prop на кол-во строк
 ch1=$(sed -n 19p make.prop)
 if [ "$ch1" != "" ]; then
   echo "FATAL! Bad make.prop"
@@ -27,7 +28,7 @@ else
     rm -f author.prop
   }
 
-  # LINK VAR
+  # Не ебу зачем но второй раз вводим переменные
   function linkvar() {
     usr=$a1
     bh=$a2
@@ -47,7 +48,7 @@ else
     th=$(($cpus + 1)) 
  }
 
-  # EXPORT
+  # Экспорт необходимых данных для сборки
   function exportmkval() {
     export ARCH="$arch"
     export TARGET_ARCH="$arch"
@@ -102,7 +103,6 @@ else
     $cy****************************************************
     $cy*       Automatic kernel builder v"$ver"      *
     $cy*                   by xyzmean                     *
-    $cy*           PaperPlane marmite Edition             *
     $cy****************************************************
     $y"
   sleep 3
@@ -134,6 +134,7 @@ else
   # Сборка ядра :3
   make -j$th O=../out/build/"$device" "$imgt"
   clear
+  # Тайтл завершения сборки
   echo -e "
 $cy****************************************************
 $cy*           Automatic kernel builder v"$ver"          *
@@ -152,8 +153,9 @@ $cy****************************************************
   # Отчистка tmp фаилов
   sleep 1
   cleantmp
+  # Вывод имени собранного пакета
   echo -e "$g Готово! Имя OTA пакета: "$otazip".zip$y"
-  # Вывод времени сборки
+  # Генерация и вывод времени сборки
   end=$(date +"%s")
   diff=$(($end - $strt))
   echo Операция выполнена успешно!

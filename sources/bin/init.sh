@@ -1,4 +1,5 @@
 #!/bin/bash
+# Скрипт для AKB-шивания исходников ядра
 e="\x1b[";c=$e"39;49;00m";y=$e"93;01m";cy=$e"96;01m";r=$e"1;91m";g=$e"92;01m";m=$e"95;01m";
 echo -e "$g Please wait...$y"
 mkdir ../tmp
@@ -8,6 +9,8 @@ cp -rf /usr/otagen ./
 mkdir sources
 mkdir gcc
 mv ../tmp/* sources/
+# Перенос папки .git в папку с исходниками для возможности продожения работы с git'ом
+mv .git sources/
 rm -rf ../tmp
 sleep 1;
 echo -e "$g  GENERATING MAKE.PROP!$y"
